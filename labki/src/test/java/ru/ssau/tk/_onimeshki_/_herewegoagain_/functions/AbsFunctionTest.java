@@ -1,4 +1,4 @@
-package functions;
+package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import org.testng.annotations.Test;
 
@@ -8,10 +8,9 @@ public class AbsFunctionTest {
 
     private final static double DELTA = 0.00001;
 
-    /*@Test
+    @Test
     public void testApply() {
-        MathFunction function = new AbsFunction(-3);
-        assertEquals( 3.0, DELTA);
-       // assertNotEquals(-3.25, DELTA);
-    }*/
+        AbsFunction testFunction = new AbsFunction();
+        assertEquals(testFunction.apply(-6), 6, DELTA);
+    }
 }
