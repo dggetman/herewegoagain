@@ -12,5 +12,6 @@ public class SqrFunctionTest {
     public void testApply() {
         MathFunction function = new SqrFunction(1);
         assertEquals( 1.0E-5, DELTA);
+        assertNotEquals(1, DELTA);
     }
 }
