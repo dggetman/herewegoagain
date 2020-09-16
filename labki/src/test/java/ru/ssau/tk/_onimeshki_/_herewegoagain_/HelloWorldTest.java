@@ -10,6 +10,9 @@ public class HelloWorldTest {
 
     @Test
     public void testMain() {
+        //assertEquals(toString(), "Hello, World!"); !оно не работает,
+        //выдаёт ошибку и совсем другую строку
+        //можно уточнить этот вопрос со стринговскими типами
 
        }
 }
