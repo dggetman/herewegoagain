@@ -12,9 +12,17 @@ public class CompositeFunctionTest {
         MathFunction functionH = new IdentityFunction();
         MathFunction functionG = new SqrtFunction();
         MathFunction functionF = new CompositeFunction(functionH, functionG);
-        assertEquals(functionF.apply(8), 4, DELTA);
+        assertEquals(functionF.apply(36), 6, DELTA);
         MathFunction abs = new AbsFunction();
         MathFunction sqrt = new SqrtFunction();
-        MathFunction funcF = new CompositeFunction(sqrt, abs);
+        //MathFunction funcF = new CompositeFunction(sqrt, abs);
+        //assertEquals(funcF.apply(6), Math.sqrt(36), DELTA);
+
+        MathFunction sqr = new SqrFunction();
+        MathFunction composite = abs.andThen(sqrt).andThen(sqr);
+        double result = sqrt.andThen(abs).andThen(sqr).apply(6.66);
+
+
+
     }
 }
