@@ -2,18 +2,18 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 public class ConstantFunction implements MathFunction {
 
-    final private double constanta;
+    private final double constant;
 
-    public ConstantFunction(double constanta) {
-        this.constanta = constanta;
+    public ConstantFunction(double constant) {
+        this.constant = constant;
     }
 
     @Override
     public double apply(double x) {
-        return constanta;
+        return constant;
     }
 
-    public double getConstanta() {
-        return constanta;
+    public double getConstant() {
+        return constant;
     }
 }

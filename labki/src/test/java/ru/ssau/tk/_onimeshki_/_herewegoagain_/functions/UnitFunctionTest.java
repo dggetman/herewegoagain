@@ -12,11 +12,13 @@ public class UnitFunctionTest {
     @Test
     public void testApply() {
         assertEquals(testFunction.apply(666.), 1, DELTA);
+        assertEquals(testFunction.apply(Double.NEGATIVE_INFINITY), 1, DELTA);
+        assertEquals(testFunction.apply(0), 1, DELTA);
     }
 
     @Test
     public void testGetNumber() {
-        assertEquals(testFunction.getConstanta(), 1, DELTA);
+        assertEquals(testFunction.getConstant(), 1, DELTA);
     }
 
 }

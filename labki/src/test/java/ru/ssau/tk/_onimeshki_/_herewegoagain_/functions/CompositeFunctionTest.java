@@ -17,11 +17,9 @@ public class CompositeFunctionTest {
         MathFunction sqrt = new SqrtFunction();
         assertEquals(functionF.apply(36), 6, DELTA);
 
-
         MathFunction sqr = new SqrFunction();
         MathFunction funcF = new CompositeFunction(sqr, sqrt);
         assertEquals(funcF.apply(6), Math.sqrt(36), DELTA);
-
 
         MathFunction composite = abs.andThen(sqrt).andThen(sqr);
         assertEquals(composite.apply(-6.66), 6.66, DELTA);

@@ -12,5 +12,8 @@ public class IdentityFunctionTest {
     public void testApply() {
         IdentityFunction testFunction = new IdentityFunction();
         assertEquals(testFunction.apply(6), 6, DELTA);
+        assertEquals(testFunction.apply(-6), -6, DELTA);
+        assertEquals(testFunction.apply(0), 0, DELTA);
+        assertEquals(testFunction.apply(Double.POSITIVE_INFINITY), Double.POSITIVE_INFINITY, DELTA);
     }
 }
