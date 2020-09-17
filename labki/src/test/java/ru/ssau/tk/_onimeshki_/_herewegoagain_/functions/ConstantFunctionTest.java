@@ -3,11 +3,11 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 public class ConstantFunctionTest {
     ConstantFunction testFunction = new ConstantFunction(666.1313);
     ConstantFunction testFunction1 = new ConstantFunction(13.1313);
-    private final static double DELTA = 0.00001;
 
     @Test
     public void testApply() {

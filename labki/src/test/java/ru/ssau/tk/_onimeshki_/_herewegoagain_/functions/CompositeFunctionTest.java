@@ -4,9 +4,10 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 import static org.testng.Assert.assertEquals;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
+
 
 public class CompositeFunctionTest {
-    private final static double DELTA = 0.00001;
 
     @Test
     public void testApply() {
