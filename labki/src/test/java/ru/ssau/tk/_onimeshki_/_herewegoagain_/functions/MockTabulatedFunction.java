@@ -30,7 +30,7 @@ public class MockTabulatedFunction extends AbstractTabulatedFunction {
 
     @Override
     public int indexOfX(double x) {
-        return (x > leftBorder()) && (x < rightBorder()) ? 0 : -1;
+        return (x > leftBound()) && (x < rightBound()) ? 0 : -1;
     }
 
     @Override
