@@ -6,7 +6,7 @@ import static org.testng.Assert.*;
 import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 public class AbstractTabulatedFunctionTest {
-
+//доделать реализацию теста когда будет готов интерфейс
     @Test
     public void testFloorIndexOfX() {
     }
