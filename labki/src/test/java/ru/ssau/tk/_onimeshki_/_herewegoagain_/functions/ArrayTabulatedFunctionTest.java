@@ -36,5 +36,21 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(getDefinedThroughArrays().extrapolateRight(99), 0, DELTA);
         assertNotEquals(getDefinedThroughMathFunction().extrapolateRight(-66), 3, DELTA);
     }
-
+  /*  @Test
+    public void testInsert() {
+        double[] x = new double[]{1, 2, 3};
+        double[] y = new double[]{10, 20, 30};
+        ArrayTabulatedFunction array = new ArrayTabulatedFunction(x, y);
+        array.insert(0, 0);
+        assertEquals(array.getY(0), 0);
+       // array.insert(6, 5);
+       //assertEquals(array.getY(4), 5);
+       // array.insert(6, 60);
+       // assertEquals(array.getY(4), 60);
+       // array.insert(4, 40);
+       //  assertEquals(array.getY(4), 40);
+       //  array.insert(5, 50);
+       //  assertEquals(array.getY(5), 50);
+    }
+*/
 }

@@ -1,6 +1,6 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Removable {
 
     private Node head;
     private int count = 0;
@@ -162,4 +162,14 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction {
         Node rightNode = leftNode.next;
         return interpolate(x, leftNode.x, rightNode.x, leftNode.y, rightNode.y);
     }
+
+    @Override
+    public void remove(int index) {
+        Node deletedNode = getNode(index);
+        deletedNode.prev.next = deletedNode.next;
+        deletedNode.next.prev = deletedNode.prev;
+        count--;
+    }
+
+
 }

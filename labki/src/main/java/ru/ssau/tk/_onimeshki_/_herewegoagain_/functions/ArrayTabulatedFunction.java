@@ -2,7 +2,7 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import java.util.Arrays;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable {
     private double[] xValues, yValues;
     private int count;
 
@@ -112,6 +112,26 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction {
             return x;
         }
         return interpolate(x, xValues[floorIndex], xValues[floorIndex + 1], yValues[floorIndex], yValues[floorIndex + 1]);
+    }
+
+    @Override
+    public void insert(double x, double y) {
+        int indexOfX = indexOfX(x);
+        if (indexOfX != -1) {
+            setY(indexOfX, y);
+        }
+        double[] newXValues = new double[count + 1];
+        double[] newYValues = new double[count + 1];
+        System.arraycopy(xValues, 0, newXValues, 0, indexOfX + 1);
+        System.arraycopy(yValues, 0, newYValues, 0, indexOfX + 1);
+        newXValues[indexOfX + 1] = x;
+        newYValues[indexOfX + 1] = y;
+        System.arraycopy(xValues, indexOfX + 1, newXValues, indexOfX + 1, count - indexOfX + 1);
+        System.arraycopy(yValues, indexOfX + 1, newYValues, indexOfX + 1, count - indexOfX + 1);
+
+        this.xValues = newXValues;
+        this.yValues = newYValues;
+        count++;
     }
 
 }
