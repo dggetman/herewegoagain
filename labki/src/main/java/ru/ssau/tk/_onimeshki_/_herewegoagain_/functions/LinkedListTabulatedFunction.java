@@ -171,5 +171,35 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         count--;
     }
 
+    protected Node floorNodeOfX(double x) {
+        Node node = head;
+        if (node.x > x) {
+            return head;
+        }
+        for (int i = 0; i < count; i++) {
+            if (node.x < x) {
+                node = node.next;
+            } else {
+                break;
+            }
+        }
+        return node.prev;
+    }
 
+    @Override
+    public double apply(double x) {
+        if (x < leftBound()) {
+            return extrapolateLeft(x);
+        } else if (x > rightBound()) {
+            return extrapolateRight(x);
+        } else {
+            Node node = floorNodeOfX(x);
+            if (node.x == x) {
+                return node.y;
+            } else {
+                return interpolate(x, node.x, node.next.x, node.y, node.next.y);
+            }
+        }
+
+    }
 }
