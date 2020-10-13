@@ -6,13 +6,13 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     private double[] xValues, yValues;
     private int count;
 
-    public ArrayTabulatedFunction (double[] xValues, double[] yValues) {
+    public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
         count = xValues.length;
         this.xValues = Arrays.copyOf(xValues, count);
         this.yValues = Arrays.copyOf(yValues, count);
     }
 
-    public ArrayTabulatedFunction (MathFunction source, double xFrom, double xTo, int count) {
+    public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
         this.count = count;
         xValues = new double[count];
         yValues = new double[count];
@@ -122,13 +122,10 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         }
         double[] newXValues = new double[count + 1];
         double[] newYValues = new double[count + 1];
-        System.arraycopy(xValues, 0, newXValues, 0, indexOfX + 1);
-        System.arraycopy(yValues, 0, newYValues, 0, indexOfX + 1);
-        newXValues[indexOfX + 1] = x;
-        newYValues[indexOfX + 1] = y;
-        System.arraycopy(xValues, indexOfX + 1, newXValues, indexOfX + 1, count - indexOfX + 1);
-        System.arraycopy(yValues, indexOfX + 1, newYValues, indexOfX + 1, count - indexOfX + 1);
-
+        System.arraycopy(xValues, 0, newXValues, 0, count);
+        System.arraycopy(yValues, 0, newYValues, 0, count);
+        newXValues[count] = x;
+        newYValues[count] = y;
         this.xValues = newXValues;
         this.yValues = newYValues;
         count++;

@@ -119,21 +119,19 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(getDefinedThroughMathFunction().apply(0), 0, DELTA);
     }
 
-  /*  @Test
+    @Test
     public void testInsert() {
         double[] x = new double[]{1, 2, 3};
-        double[] y = new double[]{10, 20, 30};
+        double[] y = new double[]{11, 22, 33};
         ArrayTabulatedFunction array = new ArrayTabulatedFunction(x, y);
         array.insert(0, 0);
-        assertEquals(array.getY(0), 0);
-       // array.insert(6, 5);
-       //assertEquals(array.getY(4), 5);
-       // array.insert(6, 60);
-       // assertEquals(array.getY(4), 60);
-       // array.insert(4, 40);
-       //  assertEquals(array.getY(4), 40);
-       //  array.insert(5, 50);
-       //  assertEquals(array.getY(5), 50);
+        assertEquals(array.getY(0), 11);
+        array.insert(6, 55);
+        assertEquals(array.getY(4), 55);
+        array.insert(4, 40);
+        assertEquals(array.getY(1), 22);
+        array.insert(2, 50);
+        assertEquals(array.getY(1), 50);
     }
-*/
+
 }
