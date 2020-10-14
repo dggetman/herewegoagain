@@ -1,6 +1,6 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Removable {
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Removable, Insertable {
 
     private Node head;
     private int count = 0;
@@ -27,6 +27,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
             head.prev = newNode;
             last.next = newNode;
         }
+        head.prev = newNode;
         count += 1;
     }
 
@@ -164,6 +165,42 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     @Override
+    public void insert(double x, double y) {
+        if (count == 0) {
+            addNode(x, y);
+
+        } else if (indexOfX(x) != -1) {
+            setY(indexOfX(x), y);
+
+        } else {
+            int index = floorIndexOfX(x);
+            Node newNode = new Node();
+            newNode.x = x;
+            newNode.y = y;
+
+            if (index == 0) {
+                newNode.next = head;
+                newNode.prev = head.prev;
+                head.prev.next = newNode;
+                head = newNode;
+            } else {
+                if (index == count) {
+                    newNode.next = head;
+                    newNode.prev = head.prev;
+                    head.prev.next = newNode;
+                    head.prev = newNode;
+                } else {
+                    Node previous = getNode(index);
+                    newNode.next = previous.next;
+                    newNode.prev = previous;
+                    previous.next = newNode;
+                    newNode.next.prev = newNode;
+                }
+            }
+            count++;
+        }
+    }
+    @Override
     public void remove(int index) {
         Node deletedNode = getNode(index);
         deletedNode.prev.next = deletedNode.next;
@@ -171,35 +208,5 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         count--;
     }
 
-    protected Node floorNodeOfX(double x) {
-        Node node = head;
-        if (node.x > x) {
-            return head;
-        }
-        for (int i = 0; i < count; i++) {
-            if (node.x < x) {
-                node = node.next;
-            } else {
-                break;
-            }
-        }
-        return node.prev;
-    }
 
-    @Override
-    public double apply(double x) {
-        if (x < leftBound()) {
-            return extrapolateLeft(x);
-        } else if (x > rightBound()) {
-            return extrapolateRight(x);
-        } else {
-            Node node = floorNodeOfX(x);
-            if (node.x == x) {
-                return node.y;
-            } else {
-                return interpolate(x, node.x, node.next.x, node.y, node.next.y);
-            }
-        }
-
-    }
 }

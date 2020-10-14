@@ -124,6 +124,35 @@ public class LinkedListTabulatedFunctionTest {
     }
 
     @Test
+    public void testInsert() {
+        double[] valuesXFirst = new double[]{};
+        double[] valuesYFirst = new double[]{};
+        LinkedListTabulatedFunction testInsertLinkedListFirst = new LinkedListTabulatedFunction(valuesXFirst, valuesYFirst);
+
+        testInsertLinkedListFirst.insert(0, 0);
+        testInsertLinkedListFirst.insert(1., 1.);
+        testInsertLinkedListFirst.insert(6., 9.);
+        testInsertLinkedListFirst.insert(13., 26.);
+        testInsertLinkedListFirst.insert(77., 33.);
+
+        //list: [(0, 0) (1, 1) (6, 9) (13, 26) (77, 33)]
+        assertEquals(testInsertLinkedListFirst.getX(0), 0, DELTA);
+        assertEquals(testInsertLinkedListFirst.getY(0), 0, DELTA);
+
+        assertEquals(testInsertLinkedListFirst.getX(1), 1, DELTA);
+        assertEquals(testInsertLinkedListFirst.getY(1), 1, DELTA);
+
+        assertEquals(testInsertLinkedListFirst.getX(2), 6, DELTA);
+        assertEquals(testInsertLinkedListFirst.getY(2), 9, DELTA);
+
+        assertEquals(testInsertLinkedListFirst.getX(3), 13, DELTA);
+        assertEquals(testInsertLinkedListFirst.getY(3), 26, DELTA);
+
+        assertNotEquals(testInsertLinkedListFirst.getX(4), 33, DELTA);
+        assertNotEquals(testInsertLinkedListFirst.getY(4), 77, DELTA);
+    }
+
+    @Test
     public void testRemove() {
         LinkedListTabulatedFunction testList = getListOfArray();
         testList.remove(1);

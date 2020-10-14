@@ -46,6 +46,7 @@ public class MockTabulatedFunction extends AbstractTabulatedFunction {
         if (index == 1) {
             return (y1);
         }
+
         return (y0);
     }
 
