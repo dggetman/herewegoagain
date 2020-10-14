@@ -6,7 +6,7 @@ import static org.testng.Assert.*;
 import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 public class ArrayTabulatedFunctionTest {
-    private final double[] valuesX = new double[]{-3., -2., -1, -0., 1., 2., 3., 4., 5., 7., 9.};
+    private final double[] valuesX = new double[]{-3., -2., -1, 0., 1., 2., 3., 4., 5.};
     private final double[] valuesY = new double[]{-13., -4., -1., 0., 1., 4., 9., 13., 25.};
     private final MathFunction sqrFunc = new SqrFunction();
 
@@ -132,6 +132,20 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(array.getY(1), 22);
         array.insert(2, 50);
         assertEquals(array.getY(1), 50);
+    }
+
+    @Test
+    public void testRemove() {
+        ArrayTabulatedFunction testDefinedThroughArrays = getDefinedThroughArrays();
+        testDefinedThroughArrays.remove(0);
+        testDefinedThroughArrays.remove(6);
+        testDefinedThroughArrays.remove(7);
+       /* old array: [(-3, -13) (-2, -4) (-1, -1) (0, 0) (1, 1) (2, 4) (3, 9) (4, 13) (5, 25)]
+        our start array: [(-2, -4) (-1, -1) (0, 0) (1, 1) (2, 4) (4, 13)] */
+        assertEquals(testDefinedThroughArrays.getX(0), -2, DELTA);
+        assertEquals(testDefinedThroughArrays.getX(1), -1, DELTA);
+        assertEquals(testDefinedThroughArrays.getX(2), 0, DELTA);
+        assertEquals(testDefinedThroughArrays.getX(3), 1, DELTA);
     }
 
 }
