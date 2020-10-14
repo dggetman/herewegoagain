@@ -104,19 +104,24 @@ public class ArrayTabulatedFunctionTest {
 
     @Test
     public void testRightBound() {
-        assertEquals(getDefinedThroughArrays().rightBound(), 9, DELTA);
+        assertEquals(getDefinedThroughArrays().rightBound(), 5, DELTA);
         assertEquals(getDefinedThroughMathFunction().rightBound(), 9, DELTA);
     }
 
     @Test
     public void testApply() {
+        assertEquals(getDefinedThroughArrays().apply(-4), -22, DELTA);
+        assertEquals(getDefinedThroughArrays().apply(13), 121, DELTA);
         assertEquals(getDefinedThroughArrays().apply(-3), -13, DELTA);
-        assertEquals(getDefinedThroughMathFunction().apply(-1), -0.08333, DELTA);
-        assertEquals(getDefinedThroughArrays().apply(3), 9, DELTA);
+        assertEquals(getDefinedThroughArrays().apply(5), 25, DELTA);
+        assertEquals(getDefinedThroughArrays().apply(1.3), 1.9, DELTA);
+
+        assertEquals(getDefinedThroughMathFunction().apply(-4), -0.33333, DELTA);
+        assertEquals(getDefinedThroughMathFunction().apply(-3), -0.25, DELTA);
+        assertEquals(getDefinedThroughMathFunction().apply(5), 25, DELTA);
+        assertEquals(getDefinedThroughMathFunction().apply(1.3), 1.691667, DELTA);
+        assertEquals(getDefinedThroughMathFunction().apply(13), 152.66667, DELTA);
         assertNotEquals(getDefinedThroughMathFunction().apply(100), 10, DELTA);
-        assertEquals(getDefinedThroughArrays().apply(0.65), 0.65, DELTA);
-        assertEquals(getDefinedThroughMathFunction().apply(0.999), 0.99808, DELTA);
-        assertEquals(getDefinedThroughMathFunction().apply(0), 0, DELTA);
     }
 
     @Test
@@ -139,7 +144,7 @@ public class ArrayTabulatedFunctionTest {
         ArrayTabulatedFunction testDefinedThroughArrays = getDefinedThroughArrays();
         testDefinedThroughArrays.remove(0);
         testDefinedThroughArrays.remove(6);
-        testDefinedThroughArrays.remove(7);
+        testDefinedThroughArrays.remove(5);
        /* old array: [(-3, -13) (-2, -4) (-1, -1) (0, 0) (1, 1) (2, 4) (3, 9) (4, 13) (5, 25)]
         array: [(-2, -4) (-1, -1) (0, 0) (1, 1) (2, 4) (4, 13)] */
         assertEquals(testDefinedThroughArrays.getX(0), -2, DELTA);

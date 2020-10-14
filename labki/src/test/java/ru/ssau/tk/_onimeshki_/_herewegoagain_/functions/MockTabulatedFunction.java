@@ -1,16 +1,21 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 public class MockTabulatedFunction extends AbstractTabulatedFunction {
-    private final double x0 = 6, x1 = 9, y0 = 7, y1 = 13;
+    private final double x0 = 6;
+    private final double x1 = 9;
+    private final double y0 = 7;
+    private final double y1 = 13;
 
     @Override
     protected int floorIndexOfX(double x) {
         if (x == x1) {
-            return (1);
+            return 1;
         }
         if (x > x1) {
-            return (2);
-        } else return (0);
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -46,13 +51,11 @@ public class MockTabulatedFunction extends AbstractTabulatedFunction {
         if (index == 1) {
             return (y1);
         }
-
         return (y0);
     }
 
     @Override
     public void setY(int index, double value) {
-
     }
 
     @Override
@@ -61,18 +64,22 @@ public class MockTabulatedFunction extends AbstractTabulatedFunction {
             return (1);
         }
         if (x == x0) {
-            return (0);
-        } else return (-1);
+            return 0;
+        } else {
+            return -1;
+        }
     }
 
     @Override
     public int indexOfY(double y) {
         if (y == y1) {
-            return (1);
+            return 1;
         }
         if (y == y0) {
-            return (0);
-        } else return (-1);
+            return 0;
+        } else {
+            return -1;
+        }
     }
 
     @Override

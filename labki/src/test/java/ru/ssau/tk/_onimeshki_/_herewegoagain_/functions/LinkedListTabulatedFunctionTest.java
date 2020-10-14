@@ -21,9 +21,17 @@ public class LinkedListTabulatedFunctionTest {
 
     @Test
     public void testApply() {
-        assertEquals(getListOfArray().apply(3), 33, DELTA);
-        assertEquals(getListOfArray().apply(7), 77, DELTA);
-        assertEquals(getListOfMathFunction().apply(11.4), 3.3762932, DELTA);
+        assertEquals(getListOfArray().apply(1), 11, DELTA);
+        assertEquals(getListOfArray().apply(5), 55, DELTA);
+        assertEquals(getListOfArray().apply(1.4), 15.4, DELTA);
+        assertEquals(getListOfArray().apply(0), 0, DELTA);
+        assertEquals(getListOfArray().apply(6), 66, DELTA);
+
+        assertEquals(getListOfMathFunction().apply(1), 1.35655, DELTA);
+        assertEquals(getListOfMathFunction().apply(5), 2.23607, DELTA);
+        assertEquals(getListOfMathFunction().apply(1.4), 1.444504, DELTA);
+        assertEquals(getListOfMathFunction().apply(0), 1.13667, DELTA);
+        assertEquals(getListOfMathFunction().apply(6), 2.4494, DELTA);
     }
 
     @Test
@@ -156,11 +164,14 @@ public class LinkedListTabulatedFunctionTest {
     public void testRemove() {
         LinkedListTabulatedFunction testList = getListOfArray();
         testList.remove(1);
-        assertEquals(testList.getX(0), 1);
         testList.remove(3);
-        assertEquals(testList.getX(2), 4);
 
-    }
+        assertEquals(testList.getX(2), 4);
+        assertEquals(testList.getX(1), 3);
+        assertEquals(testList.getX(0), 1);
+
+    }    /*old array: [(1, 11) (2, 22) (3, 33) (4, 44) (5, 55)]
+          array: [(1, 11) (3, 33) (4, 44)]         */
 
     @Test
     public void testFloorNodeOfX() {

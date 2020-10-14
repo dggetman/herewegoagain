@@ -133,22 +133,13 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public void remove(int index) {
-        double[] xTempValues = new double[count];
-        double[] yTempValues = new double[count];
+        double[] xTempValues = new double[count - 1];
+        double[] yTempValues = new double[count - 1];
 
-        if (index == 0) {
-            System.arraycopy(xValues, 1, xTempValues, 0, count - 1);
-            System.arraycopy(yValues, 1, yTempValues, 0, count - 1);
-        }
-        else if (index == count) {
-            System.arraycopy(xValues, 0, xTempValues, 0, count - 1);
-            System.arraycopy(yValues, 0, yTempValues, 0, count - 1);
-        } else {
-            System.arraycopy(xValues, 0, xTempValues, 0, index);
-            System.arraycopy(yValues, 0, yTempValues, 0, index);
-            System.arraycopy(xValues, index + 1, xTempValues, index, count - index - 1);
-            System.arraycopy(yValues, index + 1, yTempValues, index, count - index - 1);
-        }
+        System.arraycopy(xValues, 0, xTempValues, 0, index);
+        System.arraycopy(yValues, 0, yTempValues, 0, index);
+        System.arraycopy(xValues, index + 1, xTempValues, index, count - index - 1);
+        System.arraycopy(yValues, index + 1, yTempValues, index, count - index - 1);
         this.xValues = xTempValues;
         this.yValues = yTempValues;
         count--;
