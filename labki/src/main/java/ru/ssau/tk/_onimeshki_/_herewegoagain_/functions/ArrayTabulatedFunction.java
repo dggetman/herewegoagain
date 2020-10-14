@@ -3,7 +3,8 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
-    private double[] xValues, yValues;
+    private double[] xValues;
+    private double[] yValues;
     private int count;
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
