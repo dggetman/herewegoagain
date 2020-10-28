@@ -1,5 +1,7 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
+
 import java.util.Arrays;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
@@ -11,6 +13,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         if (xValues.length < 2) {
             throw new IllegalArgumentException("Less than minimum length");
         }
+        checkLengthIsTheSame(xValues, yValues);
+        checkSorted(xValues);
         count = xValues.length;
         this.xValues = Arrays.copyOf(xValues, count);
         this.yValues = Arrays.copyOf(yValues, count);
@@ -118,8 +122,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public double interpolate(double x, int floorIndex) {
-        if (count == 1) {
-            return x;
+        if (x < xValues[floorIndex] || xValues[floorIndex + 1] < x) {
+            throw new InterpolationException("X is out of bounds of interpolation");
         }
         return interpolate(x, xValues[floorIndex], xValues[floorIndex + 1], yValues[floorIndex], yValues[floorIndex + 1]);
     }

@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.ArrayTabulatedFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.SqrFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
 
 import static org.testng.Assert.*;
 import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
@@ -53,6 +54,9 @@ public class ArrayTabulatedFunctionTest {
     public void testInterpolate() {
         assertEquals(getDefinedThroughArrays().interpolate(0.666, getDefinedThroughArrays().floorIndexOfX(0.666)), 0.666, DELTA);
         assertEquals(getDefinedThroughMathFunction().interpolate(0.13, getDefinedThroughMathFunction().floorIndexOfX(0.13)), 0.018611, DELTA);
+        assertThrows(InterpolationException.class, () -> getDefinedThroughArrays().interpolate(-1.5, 3));
+        assertThrows(InterpolationException.class, () -> getDefinedThroughMathFunction().interpolate(4.5, 9));
+
     }
 
     @Test

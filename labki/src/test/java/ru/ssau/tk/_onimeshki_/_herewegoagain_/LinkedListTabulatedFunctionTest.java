@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.LinkedListTabulatedFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.SqrtFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
 
 import static org.testng.Assert.*;
 import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
@@ -147,14 +148,16 @@ public class LinkedListTabulatedFunctionTest {
     public void testInterpolate() {
         LinkedListTabulatedFunction testListArray = getListOfArray();
         LinkedListTabulatedFunction testListMath = getListOfMathFunction();
-        assertEquals(testListArray.interpolate(6, 2), 66);
+        assertEquals(testListArray.interpolate(6, 2), 66, DELTA);
         assertEquals(testListMath.interpolate(11, 3), 3.4531603, DELTA);
+        assertThrows(InterpolationException.class, () -> testListArray.interpolate(1.5, 2));
+        assertThrows(InterpolationException.class, () -> testListMath.interpolate(4.5, 5));
     }
 
     @Test
     public void testInsert() {
-        double[] valuesXFirst = new double[]{};
-        double[] valuesYFirst = new double[]{};
+        double[] valuesXFirst = new double[]{-1.,79.};
+        double[] valuesYFirst = new double[]{-1., 46.};
         LinkedListTabulatedFunction testInsertLinkedListFirst = new LinkedListTabulatedFunction(valuesXFirst, valuesYFirst);
 
         testInsertLinkedListFirst.insert(0, 0);
@@ -163,18 +166,17 @@ public class LinkedListTabulatedFunctionTest {
         testInsertLinkedListFirst.insert(13., 26.);
         testInsertLinkedListFirst.insert(77., 33.);
 
-        //list: [(0, 0) (1, 1) (6, 9) (13, 26) (77, 33)]
         assertEquals(testInsertLinkedListFirst.getX(0), 0, DELTA);
         assertEquals(testInsertLinkedListFirst.getY(0), 0, DELTA);
 
-        assertEquals(testInsertLinkedListFirst.getX(1), 1, DELTA);
-        assertEquals(testInsertLinkedListFirst.getY(1), 1, DELTA);
+        assertEquals(testInsertLinkedListFirst.getX(1), -1, DELTA);
+        assertEquals(testInsertLinkedListFirst.getY(1), -1, DELTA);
 
-        assertEquals(testInsertLinkedListFirst.getX(2), 6, DELTA);
-        assertEquals(testInsertLinkedListFirst.getY(2), 9, DELTA);
+        assertEquals(testInsertLinkedListFirst.getX(2), 79, DELTA);
+        assertEquals(testInsertLinkedListFirst.getY(2), 46, DELTA);
 
-        assertEquals(testInsertLinkedListFirst.getX(3), 13, DELTA);
-        assertEquals(testInsertLinkedListFirst.getY(3), 26, DELTA);
+        assertEquals(testInsertLinkedListFirst.getX(3), 1, DELTA);
+        assertEquals(testInsertLinkedListFirst.getY(3), 1, DELTA);
 
         assertNotEquals(testInsertLinkedListFirst.getX(4), 33, DELTA);
         assertNotEquals(testInsertLinkedListFirst.getY(4), 77, DELTA);
