@@ -31,12 +31,21 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
     }
 
     public LinkedListTabulatedFunction(double[] xValues, double[] yValues) {
+        if (xValues.length < 2) {
+            throw new IllegalArgumentException("Less than minimum length");
+        }
         for (int i = 0; i < xValues.length; i++) {
             this.addNode(xValues[i], yValues[i]);
         }
     }
 
     public LinkedListTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
+        if (count < 2) {
+            throw new IllegalArgumentException("Less than minimum length");
+        }
+        if ((xFrom >= xTo)) {
+            throw new IllegalArgumentException("Incorrect parameter values");
+        }
         this.count = count;
         double step = (xTo - xFrom) / (count - 1);
         for (int i = 0; i < count; i++) {
@@ -123,6 +132,9 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     protected int floorIndexOfX(double x) {
+        if (x < head.x) {
+            throw new IllegalArgumentException("X is less than the left border");
+        }
         Node indexNode = head;
         for (int i = 0; i < count; i++) {
             if (indexNode.x < x) {

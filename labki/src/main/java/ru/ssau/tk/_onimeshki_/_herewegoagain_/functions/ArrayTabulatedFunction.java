@@ -8,12 +8,21 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     private int count;
 
     public ArrayTabulatedFunction(double[] xValues, double[] yValues) {
+        if (xValues.length < 2) {
+            throw new IllegalArgumentException("Less than minimum length");
+        }
         count = xValues.length;
         this.xValues = Arrays.copyOf(xValues, count);
         this.yValues = Arrays.copyOf(yValues, count);
     }
 
     public ArrayTabulatedFunction(MathFunction source, double xFrom, double xTo, int count) {
+        if (count < 2) {
+            throw new IllegalArgumentException("Less than minimum length");
+        }
+        if ((xFrom >= xTo) || (xFrom < 0) | (xTo < 0)) {
+            throw new IllegalArgumentException("Incorrect parameter values");
+        }
         this.count = count;
         xValues = new double[count];
         yValues = new double[count];
@@ -81,7 +90,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     @Override
     protected int floorIndexOfX(double x) {
         if (x < xValues[0]) {
-            return 0;
+            throw new IllegalArgumentException("X is less than the left border");
         }
         for (int i = 0; i + 1 < count; i++) {
             if (xValues[i + 1] > x) {
