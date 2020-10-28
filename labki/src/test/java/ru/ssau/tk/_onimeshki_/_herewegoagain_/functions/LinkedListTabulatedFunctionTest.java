@@ -80,6 +80,15 @@ public class LinkedListTabulatedFunctionTest {
     public void testGetY() {
         assertEquals(getListOfArray().getY(0), 11, DELTA);
         assertEquals(getListOfMathFunction().getY(0), 2.2360679, DELTA);
+        assertThrows(IllegalArgumentException.class, () -> {
+            getListOfArray().floorIndexOfX(-13);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            getListOfArray().floorIndexOfX(-66);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            getListOfArray().floorIndexOfX(-131313);
+        });
     }
 
     @Test
@@ -105,8 +114,16 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     public void testFloorIndexOfX() {
         assertEquals(getListOfArray().floorIndexOfX(5), 3);
-        assertEquals(getListOfMathFunction().floorIndexOfX(-6), 0);
         assertEquals(getListOfMathFunction().floorIndexOfX(66), 60);
+        assertThrows(IllegalArgumentException.class, () -> {
+            getListOfArray().floorIndexOfX(-13);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            getListOfArray().floorIndexOfX(-66);
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            getListOfArray().floorIndexOfX(-666);
+        });
     }
 
     @Test
@@ -176,7 +193,6 @@ public class LinkedListTabulatedFunctionTest {
     @Test
     public void testFloorNodeOfX() {
         assertEquals(getListOfArray().floorIndexOfX(5), 3);
-        assertEquals(getListOfMathFunction().floorIndexOfX(-6), 0);
         assertEquals(getListOfMathFunction().floorIndexOfX(66), 60);
     }
 
