@@ -3,6 +3,8 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
 
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
     private double[] xValues;
@@ -157,5 +159,26 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         this.xValues = xTempValues;
         this.yValues = yTempValues;
         count--;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        return new Iterator<>() {
+            private int i = 0;
+
+            public boolean hasNext() {
+                return i < count;
+            }
+
+            public Point next() {
+                if (!hasNext()) {
+                    throw new UnsupportedOperationException();
+                }
+
+                Point point = new Point(xValues[i], yValues[i]);
+                i++;
+                return point;
+            }
+        };
     }
 }
