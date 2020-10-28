@@ -17,4 +17,6 @@ public interface TabulatedFunction extends MathFunction {
     double leftBound();
 
     double rightBound();
+
+    double apply(double x);
 }

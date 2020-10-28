@@ -1,4 +1,5 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
+package ru.ssau.tk._onimeshki_._herewegoagain_.functions_.exceptions.*;
 
 public abstract class AbstractTabulatedFunction implements TabulatedFunction {
 
@@ -24,6 +25,12 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
             return getY(indexOfX(x));
         } else {
             return interpolate(x, floorIndexOfX(x));
+        }
+    }
+
+    protected static void checkLengthIsTheSame(double[] xValues, double[] yValues) {
+        if (xValues.length != yValues.length) {
+            throw new DifferentLengthOfArraysException("Lengths of arrays are different");
         }
     }
 }
