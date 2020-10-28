@@ -1,4 +1,6 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
+package ru.ssau.tk._onimeshki_._herewegoagain_;
+
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.AbstractTabulatedFunction;
 
 public class MockTabulatedFunction extends AbstractTabulatedFunction {
     private final double x0 = 6;
@@ -29,7 +31,7 @@ public class MockTabulatedFunction extends AbstractTabulatedFunction {
     }
 
     @Override
-    protected double interpolate(double x, int floorIndex) {
+    public double interpolate(double x, int floorIndex) {
         return interpolate(x, x0, x1, y0, y1);
     }
 

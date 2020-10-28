@@ -1,10 +1,10 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
+package ru.ssau.tk._onimeshki_._herewegoagain_;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
-import static org.testng.Assert.*;
 import static org.testng.Assert.assertEquals;
-import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 
 public class CompositeFunctionTest {
@@ -19,22 +19,22 @@ public class CompositeFunctionTest {
         MathFunction sqrtFunction = new SqrtFunction();
         MathFunction identitySqrtFunction = new CompositeFunction(identityFunction, sqrtFunction);
         MathFunction absFunction = new AbsFunction();
-        assertEquals(identitySqrtFunction.apply(36), 6, DELTA);
+        Assert.assertEquals(identitySqrtFunction.apply(36), 6, Constants.DELTA);
         MathFunction sqrFunction = new SqrFunction();
         MathFunction sqrSqrtFunction = new CompositeFunction(sqrFunction, sqrtFunction);
 
-        assertEquals(sqrSqrtFunction.apply(-6), Math.sqrt(36), DELTA);
+        Assert.assertEquals(sqrSqrtFunction.apply(-6), Math.sqrt(36), Constants.DELTA);
         MathFunction composite = absFunction.andThen(sqrtFunction).andThen(sqrFunction);
-        assertEquals(composite.apply(-6.66), 6.66, DELTA);
+        Assert.assertEquals(composite.apply(-6.66), 6.66, Constants.DELTA);
         double result = sqrtFunction.andThen(absFunction).andThen(sqrFunction).apply(6.66);
-        assertEquals(result, 6.66, DELTA);
+        Assert.assertEquals(result, 6.66, Constants.DELTA);
 
         MathFunction listFunction = new LinkedListTabulatedFunction(valuesX, valuesY);
         MathFunction arrayFunction = new ArrayTabulatedFunction(valuesX, valuesY);
         MathFunction arrayListSqrFunction = arrayFunction.andThen(listFunction).andThen(sqrFunction);
-        assertEquals(arrayListSqrFunction.apply(1), 1, DELTA);
-        assertEquals(arrayListSqrFunction.apply(0.66), 0.4356, DELTA);
-        assertEquals(arrayListSqrFunction.apply(1.13), 4.70889, DELTA);
+        Assert.assertEquals(arrayListSqrFunction.apply(1), 1, Constants.DELTA);
+        Assert.assertEquals(arrayListSqrFunction.apply(0.66), 0.4356, Constants.DELTA);
+        Assert.assertEquals(arrayListSqrFunction.apply(1.13), 4.70889, Constants.DELTA);
 
     }
 }

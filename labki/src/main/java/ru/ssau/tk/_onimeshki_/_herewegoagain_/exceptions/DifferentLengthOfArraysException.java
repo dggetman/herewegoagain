@@ -1,4 +1,4 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_.functions.exceptions;
+package ru.ssau.tk._onimeshki_._herewegoagain_.exceptions;
 
 public class DifferentLengthOfArraysException extends RuntimeException {
 

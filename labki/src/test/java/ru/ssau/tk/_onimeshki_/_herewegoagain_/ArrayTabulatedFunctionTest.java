@@ -1,9 +1,12 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
+package ru.ssau.tk._onimeshki_._herewegoagain_;
 
 import org.testng.annotations.Test;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.ArrayTabulatedFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.SqrFunction;
 
 import static org.testng.Assert.*;
-import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
 
 public class ArrayTabulatedFunctionTest {
     private final double[] valuesX = new double[]{-3., -2., -1, 0., 1., 2., 3., 4., 5.};

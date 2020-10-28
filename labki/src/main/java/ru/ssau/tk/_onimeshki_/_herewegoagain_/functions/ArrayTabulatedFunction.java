@@ -88,7 +88,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @Override
-    protected int floorIndexOfX(double x) {
+    public int floorIndexOfX(double x) {
         if (x < xValues[0]) {
             throw new IllegalArgumentException("X is less than the left border");
         }
@@ -101,7 +101,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @Override
-    protected double extrapolateLeft(double x) {
+    public double extrapolateLeft(double x) {
         if (count == 1) {
             return x;
         }
@@ -109,7 +109,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @Override
-    protected double extrapolateRight(double x) {
+    public double extrapolateRight(double x) {
         if (count == 1) {
             return x;
         }
@@ -117,7 +117,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
     }
 
     @Override
-    protected double interpolate(double x, int floorIndex) {
+    public double interpolate(double x, int floorIndex) {
         if (count == 1) {
             return x;
         }

@@ -1,9 +1,12 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
+package ru.ssau.tk._onimeshki_._herewegoagain_;
 
 import org.testng.annotations.Test;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.LinkedListTabulatedFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.SqrtFunction;
 
 import static org.testng.Assert.*;
-import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
 
 public class LinkedListTabulatedFunctionTest {
     private final double[] xValues = new double[]{1, 2, 3, 4, 5};
