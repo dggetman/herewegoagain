@@ -3,8 +3,12 @@ package ru.ssau.tk._onimeshki_._herewegoagain_;
 import org.testng.annotations.Test;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.ArrayTabulatedFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.Point;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.SqrFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.testng.Assert.*;
 import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
@@ -196,4 +200,24 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(testDefinedThroughArrays.getX(3), 1, DELTA);
     }
 
+    @Test
+    public void testIteratorCycleWhile() {
+        Iterator<Point> iterator = getDefinedThroughArrays().iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(getDefinedThroughArrays().getX(i), point.x, DELTA);
+            assertEquals(getDefinedThroughArrays().getY(i++), point.y, DELTA);
+        }
+        assertThrows(NoSuchElementException.class, iterator::next);
+    }
+
+    @Test
+    public void testIteratorCycleForEach() {
+        int i = 0;
+        for (Point point : getDefinedThroughArrays()) {
+            assertEquals(getDefinedThroughArrays().getX(i), point.x, DELTA);
+            assertEquals(getDefinedThroughArrays().getY(i++), point.y, DELTA);
+        }
+    }
 }

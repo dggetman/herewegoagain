@@ -172,9 +172,8 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
             public Point next() {
                 if (!hasNext()) {
-                    throw new UnsupportedOperationException();
+                    throw new NoSuchElementException();
                 }
-
                 Point point = new Point(xValues[i], yValues[i]);
                 i++;
                 return point;

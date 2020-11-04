@@ -224,9 +224,8 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
             public Point next() {
                 if (!hasNext()) {
-                    throw new UnsupportedOperationException();
+                    throw new NoSuchElementException();
                 }
-
                 Point point = new Point(node.x, node.y);
                 node = (node != head.prev) ? node.next : null;
                 return point;

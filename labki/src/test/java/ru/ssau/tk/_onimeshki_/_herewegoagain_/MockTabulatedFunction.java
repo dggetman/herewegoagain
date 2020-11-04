@@ -1,6 +1,9 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_;
 
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.AbstractTabulatedFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.Point;
+
+import java.util.Iterator;
 
 public class MockTabulatedFunction extends AbstractTabulatedFunction {
     private final double x0 = 6;
@@ -92,5 +95,10 @@ public class MockTabulatedFunction extends AbstractTabulatedFunction {
     @Override
     public double rightBound() {
         return x1;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        throw new UnsupportedOperationException();
     }
 }
