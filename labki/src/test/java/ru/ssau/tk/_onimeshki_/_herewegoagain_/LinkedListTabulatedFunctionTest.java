@@ -3,8 +3,12 @@ package ru.ssau.tk._onimeshki_._herewegoagain_;
 import org.testng.annotations.Test;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.LinkedListTabulatedFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.Point;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.SqrtFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import static org.testng.Assert.*;
 import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
@@ -156,7 +160,7 @@ public class LinkedListTabulatedFunctionTest {
 
     @Test
     public void testInsert() {
-        double[] valuesXFirst = new double[]{-1.,79.};
+        double[] valuesXFirst = new double[]{-1., 79.};
         double[] valuesYFirst = new double[]{-1., 46.};
         LinkedListTabulatedFunction testInsertLinkedListFirst = new LinkedListTabulatedFunction(valuesXFirst, valuesYFirst);
 
@@ -199,6 +203,27 @@ public class LinkedListTabulatedFunctionTest {
     public void testFloorNodeOfX() {
         assertEquals(getListOfArray().floorIndexOfX(5), 3);
         assertEquals(getListOfMathFunction().floorIndexOfX(66), 60);
+    }
+
+    @Test
+    public void testIteratorCycleWhile() {
+        Iterator<Point> iterator = getListOfArray().iterator();
+        int i = 0;
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+            assertEquals(getListOfArray().getX(i), point.x, DELTA);
+            assertEquals(getListOfArray().getY(i++), point.y, DELTA);
+        }
+        assertThrows(NoSuchElementException.class, iterator::next);
+    }
+
+    @Test
+    public void testIteratorCycleForEach() {
+        int i = 0;
+        for (Point point : getListOfArray()) {
+            assertEquals(getListOfArray().getX(i), point.x, DELTA);
+            assertEquals(getListOfArray().getY(i++), point.y, DELTA);
+        }
     }
 
 }
