@@ -5,6 +5,22 @@ import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.DifferentLengthOfArrays
 
 public abstract class AbstractTabulatedFunction implements TabulatedFunction {
 
+    public abstract int getCount();
+
+    public abstract double getX(int index);
+
+    public abstract double getY(int index);
+
+    public abstract void setY(int index, double value);
+
+    public abstract int indexOfX(double x);
+
+    public abstract int indexOfY(double y);
+
+    public abstract double leftBound();
+
+    public abstract double rightBound();
+
     abstract protected int floorIndexOfX(double x);
 
     abstract protected double extrapolateLeft(double x);

@@ -51,15 +51,20 @@ public final class FunctionsIO {
 
     public static TabulatedFunction readTabulatedFunction(BufferedInputStream inputStream, TabulatedFunctionFactory factory) throws IOException {
         DataInputStream in = new DataInputStream(inputStream);
-        int count = in.readInt();
-        double[] xValues = new double[count];
-        double[] yValues = new double[count];
-        for (int i = 0; i < count; i++) {
+        int length = in.readInt();
+        double[] xValues = new double[length];
+        double[] yValues = new double[length];
+        for (int i = 0; i < length; i++) {
             xValues[i] = in.readDouble();
             yValues[i] = in.readDouble();
         }
         return factory.create(xValues, yValues);
+
     }
 
-
+    public static void serialize(BufferedOutputStream stream, TabulatedFunction function) throws IOException {
+        ObjectOutputStream outStream = new ObjectOutputStream(stream);
+        outStream.writeObject(function);
+        outStream.flush();
+    }
 }

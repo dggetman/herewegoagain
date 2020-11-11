@@ -2,11 +2,13 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable {
+public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements Insertable, Removable, Serializable {
+    private static final long serialVersionUID = 6683091547064028060L;
     private double[] xValues;
     private double[] yValues;
     private int count;
