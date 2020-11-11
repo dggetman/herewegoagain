@@ -2,15 +2,18 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Removable, Insertable {
+public class LinkedListTabulatedFunction extends AbstractTabulatedFunction implements Removable, Insertable, Serializable {
 
+    private static final long serialVersionUID = -7114814848443532576L;
     private Node head;
     private int count = 0;
 
-    protected static class Node {
+    protected static class Node implements Serializable {
+        private static final long serialVersionUID = -1953474641328267501L;
         public double x;
         public double y;
         public Node next;

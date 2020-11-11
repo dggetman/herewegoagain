@@ -67,4 +67,11 @@ public final class FunctionsIO {
         outStream.writeObject(function);
         outStream.flush();
     }
+
+    public static TabulatedFunction deserialize(BufferedInputStream stream) throws IOException, ClassNotFoundException {
+        ObjectInputStream in = new ObjectInputStream(stream);
+        Object deserializedFunction = in.readObject();
+        return (TabulatedFunction) deserializedFunction;
+    }
+
 }
