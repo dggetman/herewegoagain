@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.LinkedListTabulatedFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.TabulatedFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.LinkedListTabulatedFunctionFactory;
-import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 import static org.testng.Assert.*;
 
@@ -19,10 +19,10 @@ public class TabulatedDifferentialOperatorTest {
         TabulatedDifferentialOperator differentialOperator = new TabulatedDifferentialOperator(new LinkedListTabulatedFunctionFactory());
         TabulatedFunction diffFunction = differentialOperator.derive(testArrayFunction);
         assertEquals(diffFunction.getX(0), 1, DELTA);
-        assertEquals(diffFunction.getX(2), 1, DELTA);
-        assertEquals(diffFunction.getX(4), 1, DELTA);
-        assertEquals(diffFunction.getY(0), 1, DELTA);
-        assertEquals(diffFunction.getY(2), 1, DELTA);
-        assertEquals(diffFunction.getY(4), 1, DELTA);
+        assertEquals(diffFunction.getX(2), 3, DELTA);
+        assertEquals(diffFunction.getX(4), 5, DELTA);
+        assertEquals(diffFunction.getY(0), 11, DELTA);
+        assertEquals(diffFunction.getY(2), 11, DELTA);
+        assertEquals(diffFunction.getY(4), 55, DELTA);
     }
 }

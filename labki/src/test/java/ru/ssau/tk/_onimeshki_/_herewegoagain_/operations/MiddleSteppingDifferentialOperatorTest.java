@@ -2,7 +2,7 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.operations;
 
 import org.testng.annotations.Test;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.SqrFunction;
-import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 
 import static org.testng.Assert.*;

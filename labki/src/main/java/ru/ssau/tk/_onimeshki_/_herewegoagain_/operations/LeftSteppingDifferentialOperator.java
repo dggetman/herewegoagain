@@ -3,7 +3,7 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.operations;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
 
 public class LeftSteppingDifferentialOperator extends SteppingDifferentialOperator {
-    LeftSteppingDifferentialOperator(double step) {
+    public LeftSteppingDifferentialOperator(double step) {
         super(step);
     }
 

@@ -1,10 +1,9 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_;
+package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import org.testng.annotations.Test;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.IdentityFunction;
 
 import static org.testng.Assert.*;
-import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 public class IdentityFunctionTest {
 

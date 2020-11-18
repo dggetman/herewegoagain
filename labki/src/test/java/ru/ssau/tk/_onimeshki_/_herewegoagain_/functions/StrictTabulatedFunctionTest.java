@@ -79,9 +79,9 @@ public class StrictTabulatedFunctionTest {
         assertEquals(testArrayFunction.indexOfX(3), 2);
         assertEquals(testArrayFunction.indexOfX(5), 4);
         StrictTabulatedFunction testListFunction = new StrictTabulatedFunction(getListOfArray());
-        assertEquals(testListFunction.indexOfX(11), 0);
-        assertEquals(testListFunction.indexOfX(33), 2);
-        assertEquals(testListFunction.indexOfX(55), 4);
+        assertEquals(testListFunction.indexOfX(1), 0);
+        assertEquals(testListFunction.indexOfX(3), 2);
+        assertEquals(testListFunction.indexOfX(5), 4);
     }
 
     @Test
@@ -91,9 +91,9 @@ public class StrictTabulatedFunctionTest {
         assertEquals(testArrayFunction.indexOfY(33), 2);
         assertEquals(testArrayFunction.indexOfY(55), 4);
         StrictTabulatedFunction testListFunction = new StrictTabulatedFunction(getListOfArray());
-        assertEquals(testListFunction.indexOfY(1), 0);
-        assertEquals(testListFunction.indexOfY(3), 2);
-        assertEquals(testListFunction.indexOfY(5), 4);
+        assertEquals(testListFunction.indexOfY(11), 0);
+        assertEquals(testListFunction.indexOfY(33), 2);
+        assertEquals(testListFunction.indexOfY(55), 4);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class StrictTabulatedFunctionTest {
         StrictTabulatedFunction testArrayFunction = new StrictTabulatedFunction(getDefinedThroughArrays());
         assertEquals(testArrayFunction.leftBound(), 1);
         StrictTabulatedFunction testListFunction = new StrictTabulatedFunction(getListOfArray());
-        assertEquals(testListFunction.leftBound(), 11);
+        assertEquals(testListFunction.leftBound(), 1);
     }
 
     @Test
@@ -109,7 +109,7 @@ public class StrictTabulatedFunctionTest {
         StrictTabulatedFunction testArrayFunction = new StrictTabulatedFunction(getDefinedThroughArrays());
         assertEquals(testArrayFunction.rightBound(), 7);
         StrictTabulatedFunction testListFunction = new StrictTabulatedFunction(getListOfArray());
-        assertEquals(testListFunction.rightBound(), 77);
+        assertEquals(testListFunction.rightBound(), 7);
     }
 
     @Test
@@ -132,9 +132,9 @@ public class StrictTabulatedFunctionTest {
         assertEquals(testArrayFunction.apply(3), 33);
         assertEquals(testArrayFunction.apply(5), 55);
         StrictTabulatedFunction testListFunction = new StrictTabulatedFunction(getListOfArray());
-        assertEquals(testListFunction.apply(11), 1);
-        assertEquals(testListFunction.apply(33), 3);
-        assertEquals(testListFunction.apply(55), 5);
+        assertEquals(testListFunction.apply(1), 11);
+        assertEquals(testListFunction.apply(3), 33);
+        assertEquals(testListFunction.apply(5), 55);
 
         assertThrows(UnsupportedOperationException.class, () -> testArrayFunction.apply(-2));
         assertThrows(UnsupportedOperationException.class, () -> testListFunction.apply(-2));

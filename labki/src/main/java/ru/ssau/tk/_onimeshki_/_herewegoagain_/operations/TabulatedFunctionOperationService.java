@@ -1,10 +1,8 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.operations;
 
-import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InconsistentFunctionsException;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.Point;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.TabulatedFunction;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.ArrayTabulatedFunctionFactory;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.TabulatedFunctionFactory;
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.*;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.*;
 
 public class TabulatedFunctionOperationService {
 
@@ -59,20 +57,20 @@ public class TabulatedFunctionOperationService {
         return doOperation(a, b, (u, v) -> u - v);
     }
 
-    public TabulatedFunctionFactory getFactory() {
-        return factory;
-    }
-
-    public void setFactory(TabulatedFunctionFactory factory) {
-        this.factory = factory;
-    }
-
     public TabulatedFunction multiply(TabulatedFunction a, TabulatedFunction b) {
         return doOperation(a, b, (u, v) -> u * v);
     }
 
     public TabulatedFunction divide(TabulatedFunction a, TabulatedFunction b) {
         return doOperation(a, b, (u, v) -> u / v);
+    }
+
+    public TabulatedFunctionFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(TabulatedFunctionFactory factory) {
+        this.factory = factory;
     }
 
 }

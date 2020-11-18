@@ -1,4 +1,4 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_;
+package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.AbstractTabulatedFunction;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.Point;

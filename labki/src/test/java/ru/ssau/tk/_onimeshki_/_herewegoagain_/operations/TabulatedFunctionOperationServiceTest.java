@@ -8,16 +8,16 @@ import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.*;
 import static org.testng.Assert.*;
 
 public class TabulatedFunctionOperationServiceTest {
-    double[] firstX = new double[]{-1., 6., 9., 13.};
-    double[] firstY = new double[]{-1., 3., 10., 11};
-    double[] secondX = new double[]{-1., 6., 7., 9.};
-    double[] secondY = new double[]{-2., 3., 5., 11};
+    double[] firstX = new double[]{1., 2., 3., 4.};
+    double[] firstY = new double[]{2., 4., 6., 8.};
+    double[] secondX = new double[]{1., 2., 3., 5.};
+    double[] secondY = new double[]{1., 2., 3., 4.};
 
-    TabulatedFunctionFactory linkedListFactory = new LinkedListTabulatedFunctionFactory();
-    TabulatedFunctionOperationService operationServiceThroughArray = new TabulatedFunctionOperationService();
-    TabulatedFunctionOperationService operationServiceThroughLinkedList = new TabulatedFunctionOperationService(linkedListFactory);
-    TabulatedFunction a = new ArrayTabulatedFunctionFactory().create(firstX, firstY);
-    TabulatedFunction b = linkedListFactory.create(firstX, secondY);
+    private TabulatedFunctionFactory linkedListFactory = new LinkedListTabulatedFunctionFactory();
+    private TabulatedFunctionOperationService operationServiceThroughArray = new TabulatedFunctionOperationService();
+    private TabulatedFunctionOperationService operationServiceThroughLinkedList = new TabulatedFunctionOperationService(linkedListFactory);
+    private TabulatedFunction a = new ArrayTabulatedFunctionFactory().create(firstX, firstY);
+    private TabulatedFunction b = linkedListFactory.create(firstX, secondY);
 
     @Test
     public void testAsPoints() {
@@ -28,6 +28,7 @@ public class TabulatedFunctionOperationServiceTest {
             assertEquals(point.x, array.getX(i));
             assertEquals(point.y, array.getY(i++));
         }
+        assertEquals(array.getCount(), i);
     }
 
     @Test
@@ -83,9 +84,33 @@ public class TabulatedFunctionOperationServiceTest {
 
     @Test
     public void testMultiply() {
+        TabulatedFunction resultSumThroughArray = operationServiceThroughArray.multiply(a, b);
+        TabulatedFunction resultSumThroughLinkedList = operationServiceThroughLinkedList.multiply(a, b);
+        int i = 0;
+        for (Point point : resultSumThroughArray) {
+            assertEquals(point.x, firstX[i]);
+            assertEquals(point.y, firstY[i] * secondY[i++]);
+        }
+        i = 0;
+        for (Point point : resultSumThroughLinkedList) {
+            assertEquals(point.x, firstX[i]);
+            assertEquals(point.y, firstY[i] * secondY[i++]);
+        }
     }
 
     @Test
     public void testDivide() {
+        TabulatedFunction resultSumThroughArray = operationServiceThroughArray.divide(a, b);
+        TabulatedFunction resultSumThroughLinkedList = operationServiceThroughLinkedList.divide(a, b);
+        int i = 0;
+        for (Point point : resultSumThroughArray) {
+            assertEquals(point.x, firstX[i++]);
+            assertEquals(point.y, 2.);
+        }
+        i = 0;
+        for (Point point : resultSumThroughLinkedList) {
+            assertEquals(point.x, firstX[i++]);
+            assertEquals(point.y, 2.);
+        }
     }
 }

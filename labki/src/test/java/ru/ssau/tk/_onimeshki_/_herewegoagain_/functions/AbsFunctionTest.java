@@ -1,8 +1,7 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_;
+package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.AbsFunction;
 
 public class AbsFunctionTest {
     @Test

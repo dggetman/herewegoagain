@@ -28,7 +28,7 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
         if (count < 2) {
             throw new IllegalArgumentException("Less than minimum length");
         }
-        if ((xFrom >= xTo) || (xFrom < 0) | (xTo < 0)) {
+        if (xFrom >= xTo) {
             throw new IllegalArgumentException("Incorrect parameter values");
         }
         this.count = count;
@@ -110,17 +110,11 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public double extrapolateLeft(double x) {
-        if (count == 1) {
-            return x;
-        }
         return interpolate(x, xValues[0], xValues[1], yValues[0], yValues[1]);
     }
 
     @Override
     public double extrapolateRight(double x) {
-        if (count == 1) {
-            return x;
-        }
         return interpolate(x, xValues[count - 2], xValues[count - 1], yValues[count - 2], yValues[count - 1]);
     }
 
@@ -151,6 +145,9 @@ public class ArrayTabulatedFunction extends AbstractTabulatedFunction implements
 
     @Override
     public void remove(int index) {
+        if (count <= 2) {
+            throw new IllegalArgumentException("Less than minimum length");
+        }
         double[] xTempValues = new double[count - 1];
         double[] yTempValues = new double[count - 1];
 

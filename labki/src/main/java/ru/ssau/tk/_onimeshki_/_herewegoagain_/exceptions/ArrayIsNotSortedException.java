@@ -1,6 +1,9 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.exceptions;
 
-public class ArrayIsNotSortedException extends RuntimeException {
+import java.io.Serializable;
+
+public class ArrayIsNotSortedException extends RuntimeException implements Serializable {
+    private static final long serialVersionUID = -1296633046662392056L;
 
     public ArrayIsNotSortedException() {
     }

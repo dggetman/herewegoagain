@@ -1,8 +1,7 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_;
+package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
 import static org.testng.Assert.assertEquals;
 
@@ -33,8 +32,7 @@ public class CompositeFunctionTest {
         MathFunction arrayFunction = new ArrayTabulatedFunction(valuesX, valuesY);
         MathFunction arrayListSqrFunction = arrayFunction.andThen(listFunction).andThen(sqrFunction);
         Assert.assertEquals(arrayListSqrFunction.apply(1), 1, Constants.DELTA);
-        Assert.assertEquals(arrayListSqrFunction.apply(0.66), 0.4356, Constants.DELTA);
-        Assert.assertEquals(arrayListSqrFunction.apply(1.13), 4.70889, Constants.DELTA);
+        Assert.assertEquals(arrayListSqrFunction.apply(2), 169, Constants.DELTA);
 
     }
 }

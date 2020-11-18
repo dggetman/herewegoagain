@@ -56,7 +56,6 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         if ((xFrom >= xTo)) {
             throw new IllegalArgumentException("Incorrect parameter values");
         }
-        this.count = count;
         double step = (xTo - xFrom) / (count - 1);
         for (int i = 0; i < count; i++) {
             this.addNode(xFrom, source.apply(xFrom));
@@ -99,7 +98,7 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
                 indexNode = indexNode.prev;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Null");
     }
 
     @Override
@@ -161,17 +160,11 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     public double extrapolateLeft(double x) {
-        if (head.x == head.prev.x) {
-            return head.y;
-        }
         return interpolate(x, head.x, head.next.x, head.y, head.next.y);
     }
 
     @Override
     public double extrapolateRight(double x) {
-        if (head.x == head.prev.x) {
-            return head.y;
-        }
         return interpolate(x, head.prev.prev.x, head.prev.x, head.prev.prev.y, head.prev.y);
     }
 
@@ -210,10 +203,15 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
 
     @Override
     public void remove(int index) {
-        Node deletedNode = getNode(index);
-        deletedNode.prev.next = deletedNode.next;
-        deletedNode.next.prev = deletedNode.prev;
-        count--;
+        if (count <= 2) {
+            throw new IllegalArgumentException("Less than minimum length");
+        }
+        else {
+            Node deletedNode = getNode(index);
+            deletedNode.prev.next = deletedNode.next;
+            deletedNode.next.prev = deletedNode.prev;
+            count--;
+        }
     }
 
     @Override

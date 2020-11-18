@@ -1,4 +1,4 @@
-package ru.ssau.tk._onimeshki_._herewegoagain_;
+package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import org.testng.annotations.Test;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.ArrayTabulatedFunction;
@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import static org.testng.Assert.*;
-import static ru.ssau.tk._onimeshki_._herewegoagain_.Constants.DELTA;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 public class ArrayTabulatedFunctionTest {
     private final double[] valuesX = new double[]{-3., -2., -1, 0., 1., 2., 3., 4., 5.};
