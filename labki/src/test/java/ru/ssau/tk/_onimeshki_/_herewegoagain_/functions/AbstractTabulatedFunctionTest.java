@@ -10,12 +10,6 @@ import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 public class AbstractTabulatedFunctionTest {
     public MockTabulatedFunction mockObj = new MockTabulatedFunction();
 
-    private static void run() {
-        double[] valuesX = new double[]{-13., 6};
-        double[] valuesY = new double[]{9.};
-        AbstractTabulatedFunction.checkLengthIsTheSame(valuesX, valuesY);
-    }
-
     @Test
     public void testInterpolate() {
         assertEquals(mockObj.interpolate(3, 6, 9, 7, 3), 11, DELTA);
@@ -34,7 +28,7 @@ public class AbstractTabulatedFunctionTest {
         assertThrows(DifferentLengthOfArraysException.class, () -> {
             double[] x = new double[]{-3., 5};
             double[] y = new double[]{9.};
-            mockObj.checkLengthIsTheSame(x, y);
+            AbstractTabulatedFunction.checkLengthIsTheSame(x, y);
         });
     }
 
@@ -42,7 +36,7 @@ public class AbstractTabulatedFunctionTest {
     public void checkSorted() {
         assertThrows(ArrayIsNotSortedException.class, () -> {
             double[] x = new double[]{-13., 0, 1, 6, 10, -11};
-            mockObj.checkSorted(x);
+            AbstractTabulatedFunction.checkSorted(x);
         });
 
         double[] x = new double[]{1, 5, 9, 10, 16};

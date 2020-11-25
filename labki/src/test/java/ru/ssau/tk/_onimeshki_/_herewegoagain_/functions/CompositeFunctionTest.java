@@ -3,8 +3,6 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
 
 public class CompositeFunctionTest {
 

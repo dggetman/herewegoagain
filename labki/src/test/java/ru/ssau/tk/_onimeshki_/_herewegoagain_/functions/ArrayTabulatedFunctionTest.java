@@ -1,11 +1,7 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import org.testng.annotations.Test;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.ArrayTabulatedFunction;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.Point;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.SqrFunction;
-import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.*;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -44,15 +40,9 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(getDefinedThroughArrays().floorIndexOfX(13), 9, DELTA);
         assertEquals(getDefinedThroughArrays().floorIndexOfX(-1), 2, DELTA);
         assertEquals(getDefinedThroughMathFunction().floorIndexOfX(666), 109, DELTA);
-        assertThrows(IllegalArgumentException.class, () -> {
-            getDefinedThroughArrays().floorIndexOfX(-13);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            getDefinedThroughArrays().floorIndexOfX(-66);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            getDefinedThroughArrays().floorIndexOfX(-666);
-        });
+        assertThrows(IllegalArgumentException.class, () -> getDefinedThroughArrays().floorIndexOfX(-13));
+        assertThrows(IllegalArgumentException.class, () -> getDefinedThroughArrays().floorIndexOfX(-66));
+        assertThrows(IllegalArgumentException.class, () -> getDefinedThroughArrays().floorIndexOfX(-666));
     }
 
     @Test
@@ -90,15 +80,9 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(getDefinedThroughMathFunction().getX(0), 0, DELTA);
         assertEquals(getDefinedThroughMathFunction().getX(35), 2.916667, DELTA);
         assertNotEquals(getDefinedThroughMathFunction().getX(81), 27, DELTA);
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(-111111);
-        });
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(131313);
-        });
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(666666);
-        });
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(-111111));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(131313));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(666666));
     }
 
     @Test
@@ -109,15 +93,9 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(getDefinedThroughMathFunction().getY(0), 0, DELTA);
         assertEquals(getDefinedThroughMathFunction().getY(20), 2.7777776, DELTA);
         assertEquals(getDefinedThroughMathFunction().getY(108), 81, DELTA);
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(-111111);
-        });
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(131313);
-        });
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(666666);
-        });
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(-111111));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(131313));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(666666));
     }
 
     @Test
@@ -129,15 +107,9 @@ public class ArrayTabulatedFunctionTest {
         testDefinedThroughMathFunction.setY(0, 1009);
         assertEquals(testDefinedThroughArrays.getY(1), 4, DELTA);
         assertEquals(testDefinedThroughMathFunction.getY(0), 1009, DELTA);
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(-111111);
-        });
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(131313);
-        });
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-            getDefinedThroughMathFunction().getX(666666);
-        });
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(-111111));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(131313));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> getDefinedThroughMathFunction().getX(666666));
     }
 
     @Test
@@ -211,6 +183,13 @@ public class ArrayTabulatedFunctionTest {
         assertEquals(testDefinedThroughArrays.getX(1), -1, DELTA);
         assertEquals(testDefinedThroughArrays.getX(2), 0, DELTA);
         assertEquals(testDefinedThroughArrays.getX(3), 1, DELTA);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            double[] valuesXTest = new double[]{-13., 21.};
+            double[] valuesYTest = new double[]{19., 44.};
+            ArrayTabulatedFunction testRemove = new ArrayTabulatedFunction(valuesXTest, valuesYTest);
+            testRemove.remove(0);
+        });
     }
 
     @Test

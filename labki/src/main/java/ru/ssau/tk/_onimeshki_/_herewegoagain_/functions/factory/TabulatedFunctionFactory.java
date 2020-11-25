@@ -1,9 +1,7 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory;
 
 
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.TabulatedFunction;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.StrictTabulatedFunction;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.UnmodifiableTabulatedFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
 
 public interface TabulatedFunctionFactory {

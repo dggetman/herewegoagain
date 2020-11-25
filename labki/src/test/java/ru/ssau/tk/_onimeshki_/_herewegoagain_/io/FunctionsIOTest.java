@@ -2,8 +2,6 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.io;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-
 public class FunctionsIOTest {
 
     @Test

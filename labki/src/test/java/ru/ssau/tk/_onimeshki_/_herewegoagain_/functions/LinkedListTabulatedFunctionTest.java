@@ -1,7 +1,7 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
 import org.testng.annotations.Test;
-import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.*;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -57,6 +57,7 @@ public class LinkedListTabulatedFunctionTest {
         assertEquals(getListOfArray().getX(3), 4, DELTA);
         assertEquals(getListOfArray().getX(4), 5, DELTA);
 
+        assertThrows(IllegalArgumentException.class, () -> getListOfArray().getX(-5));
     }
 
     @Test
@@ -95,15 +96,9 @@ public class LinkedListTabulatedFunctionTest {
     public void testGetY() {
         assertEquals(getListOfArray().getY(0), 11, DELTA);
         assertEquals(getListOfMathFunction().getY(0), 1, DELTA);
-        assertThrows(IllegalArgumentException.class, () -> {
-            getListOfArray().floorIndexOfX(-13);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            getListOfArray().floorIndexOfX(-66);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            getListOfArray().floorIndexOfX(-131313);
-        });
+        assertThrows(IllegalArgumentException.class, () -> getListOfArray().floorIndexOfX(-13));
+        assertThrows(IllegalArgumentException.class, () -> getListOfArray().floorIndexOfX(-66));
+        assertThrows(IllegalArgumentException.class, () -> getListOfArray().floorIndexOfX(-131313));
     }
 
     @Test
@@ -130,15 +125,9 @@ public class LinkedListTabulatedFunctionTest {
     public void testFloorIndexOfX() {
         assertEquals(getListOfArray().floorIndexOfX(5), 3);
         assertEquals(getListOfMathFunction().floorIndexOfX(66), 10);
-        assertThrows(IllegalArgumentException.class, () -> {
-            getListOfArray().floorIndexOfX(-13);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            getListOfArray().floorIndexOfX(-66);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            getListOfArray().floorIndexOfX(-666);
-        });
+        assertThrows(IllegalArgumentException.class, () -> getListOfArray().floorIndexOfX(-13));
+        assertThrows(IllegalArgumentException.class, () -> getListOfArray().floorIndexOfX(-66));
+        assertThrows(IllegalArgumentException.class, () -> getListOfArray().floorIndexOfX(-666));
     }
 
     @Test
@@ -202,6 +191,13 @@ public class LinkedListTabulatedFunctionTest {
         assertEquals(testList.getX(2), 4);
         assertEquals(testList.getX(1), 3);
         assertEquals(testList.getX(0), 1);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            double[] valuesXTest = new double[]{-13., 21.};
+            double[] valuesYTest = new double[]{19., 44.};
+            ArrayTabulatedFunction testRemove = new ArrayTabulatedFunction(valuesXTest, valuesYTest);
+            testRemove.remove(0);
+        });
 
     }    /*old array: [(1, 11) (2, 22) (3, 33) (4, 44) (5, 55)]
           array: [(1, 11) (3, 33) (4, 44)]         */

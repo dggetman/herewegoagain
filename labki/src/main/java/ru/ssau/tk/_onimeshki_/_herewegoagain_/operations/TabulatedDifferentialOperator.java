@@ -1,9 +1,7 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.operations;
 
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.Point;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.TabulatedFunction;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.ArrayTabulatedFunctionFactory;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.TabulatedFunctionFactory;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.*;
 
 public class TabulatedDifferentialOperator implements DifferentialOperator<TabulatedFunction> {
     private TabulatedFunctionFactory factory;

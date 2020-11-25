@@ -2,7 +2,7 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.LinkedListTabulatedFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
 import static org.testng.Assert.*;
 import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;

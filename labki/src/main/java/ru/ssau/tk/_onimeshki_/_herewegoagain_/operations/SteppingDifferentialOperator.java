@@ -1,6 +1,6 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.operations;
 
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.MathFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
 public abstract class SteppingDifferentialOperator implements DifferentialOperator<MathFunction> {
     protected double step;

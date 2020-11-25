@@ -1,6 +1,6 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
-import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InterpolationException;
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.*;
 
 import java.io.Serializable;
 import java.util.Iterator;

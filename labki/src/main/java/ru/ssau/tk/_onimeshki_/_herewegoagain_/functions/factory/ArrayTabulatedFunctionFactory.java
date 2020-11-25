@@ -1,7 +1,6 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory;
 
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.ArrayTabulatedFunction;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.TabulatedFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
 public class ArrayTabulatedFunctionFactory implements TabulatedFunctionFactory {
 

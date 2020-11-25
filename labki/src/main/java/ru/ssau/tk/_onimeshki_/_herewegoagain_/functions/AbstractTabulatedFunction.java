@@ -1,7 +1,6 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions;
 
-import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.ArrayIsNotSortedException;
-import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.DifferentLengthOfArraysException;
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.*;
 
 public abstract class AbstractTabulatedFunction implements TabulatedFunction {
 

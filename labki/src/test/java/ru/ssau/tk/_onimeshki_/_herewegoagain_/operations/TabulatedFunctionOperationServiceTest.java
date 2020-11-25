@@ -1,7 +1,7 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.operations;
 
 import org.testng.annotations.Test;
-import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.InconsistentFunctionsException;
+import ru.ssau.tk._onimeshki_._herewegoagain_.exceptions.*;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory.*;
 
@@ -13,11 +13,11 @@ public class TabulatedFunctionOperationServiceTest {
     double[] secondX = new double[]{1., 2., 3., 5.};
     double[] secondY = new double[]{1., 2., 3., 4.};
 
-    private TabulatedFunctionFactory linkedListFactory = new LinkedListTabulatedFunctionFactory();
-    private TabulatedFunctionOperationService operationServiceThroughArray = new TabulatedFunctionOperationService();
-    private TabulatedFunctionOperationService operationServiceThroughLinkedList = new TabulatedFunctionOperationService(linkedListFactory);
-    private TabulatedFunction a = new ArrayTabulatedFunctionFactory().create(firstX, firstY);
-    private TabulatedFunction b = linkedListFactory.create(firstX, secondY);
+    private final TabulatedFunctionFactory linkedListFactory = new LinkedListTabulatedFunctionFactory();
+    private final TabulatedFunctionOperationService operationServiceThroughArray = new TabulatedFunctionOperationService();
+    private final TabulatedFunctionOperationService operationServiceThroughLinkedList = new TabulatedFunctionOperationService(linkedListFactory);
+    private final TabulatedFunction a = new ArrayTabulatedFunctionFactory().create(firstX, firstY);
+    private final TabulatedFunction b = linkedListFactory.create(firstX, secondY);
 
     @Test
     public void testAsPoints() {

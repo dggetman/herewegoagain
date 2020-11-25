@@ -1,7 +1,7 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.functions.factory;
 
 import org.testng.annotations.Test;
-import ru.ssau.tk._onimeshki_._herewegoagain_.functions.ArrayTabulatedFunction;
+import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
 import static org.testng.Assert.*;
 
