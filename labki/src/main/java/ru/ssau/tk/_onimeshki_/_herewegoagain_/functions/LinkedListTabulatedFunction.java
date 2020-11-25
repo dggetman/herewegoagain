@@ -206,12 +206,15 @@ public class LinkedListTabulatedFunction extends AbstractTabulatedFunction imple
         if (count <= 2) {
             throw new IllegalArgumentException("Less than minimum length");
         }
-        else {
-            Node deletedNode = getNode(index);
+
+        Node deletedNode = getNode(index);
+        if (deletedNode == head) {
+            head = deletedNode.next;
+        } else {
             deletedNode.prev.next = deletedNode.next;
             deletedNode.next.prev = deletedNode.prev;
-            count--;
         }
+        count--;
     }
 
     @Override

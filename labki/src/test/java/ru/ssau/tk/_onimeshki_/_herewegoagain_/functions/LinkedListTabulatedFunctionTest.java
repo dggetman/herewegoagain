@@ -15,12 +15,24 @@ public class LinkedListTabulatedFunctionTest {
     private final MathFunction testFunction = new SqrtFunction();
 
     private LinkedListTabulatedFunction getListOfArray() {
-
         return new LinkedListTabulatedFunction(xValues, yValues);
     }
 
     private LinkedListTabulatedFunction getListOfMathFunction() {
         return new LinkedListTabulatedFunction(testFunction, 1., 5, 10);
+    }
+
+    @Test
+    public void testLinkedListTabulatedFunction() {
+        double[] xValues = {1.3};
+        double[] yValues = {6.9};
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(xValues, yValues));
+        double[] xValues1 = new double[]{};
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(xValues1, yValues));
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 10, 2, 10));
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 6, 2, 20));
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 11, 1, 21));
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 999, 666, 6969690));
     }
 
     @Test

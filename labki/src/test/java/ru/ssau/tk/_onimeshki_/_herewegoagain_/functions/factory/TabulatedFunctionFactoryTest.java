@@ -12,20 +12,20 @@ public class TabulatedFunctionFactoryTest {
     @Test
     public void testCreateStrictAndUnmodifiable() {
         TabulatedFunctionFactory listFactoryS = new LinkedListTabulatedFunctionFactory();
-        TabulatedFunction strictListFunction = listFactoryS.createStrict(x, y);
-        assertTrue(strictListFunction instanceof StrictTabulatedFunction);
+        TabulatedFunction strictListFunction = listFactoryS.createUnmodifiable(x, y);
+        assertTrue(strictListFunction instanceof UnmodifiableTabulatedFunction);
 
         TabulatedFunctionFactory arrayFactoryS = new LinkedListTabulatedFunctionFactory();
-        TabulatedFunction strictArrayFunction = arrayFactoryS.createStrict(x, y);
-        assertTrue(strictArrayFunction instanceof StrictTabulatedFunction);
+        TabulatedFunction strictArrayFunction = arrayFactoryS.createUnmodifiable(x, y);
+        assertTrue(strictArrayFunction instanceof UnmodifiableTabulatedFunction);
 
         TabulatedFunctionFactory listFactoryU = new LinkedListTabulatedFunctionFactory();
-        TabulatedFunction unmodifiableListFunction = listFactoryU.createUnmodifiable(x, y);
-        assertTrue(unmodifiableListFunction instanceof UnmodifiableTabulatedFunction);
+        TabulatedFunction unmodifiableListFunction = listFactoryU.createStrict(x, y);
+        assertTrue(unmodifiableListFunction instanceof StrictTabulatedFunction);
 
         TabulatedFunctionFactory arrayFactoryU = new LinkedListTabulatedFunctionFactory();
-        TabulatedFunction unmodifiableArrayFunction = arrayFactoryU.createUnmodifiable(x, y);
-        assertTrue(unmodifiableArrayFunction instanceof UnmodifiableTabulatedFunction);
+        TabulatedFunction unmodifiableArrayFunction = arrayFactoryU.createStrict(x, y);
+        assertTrue(unmodifiableArrayFunction instanceof StrictTabulatedFunction);
 
 
         TabulatedFunctionFactory listFactoryD = new LinkedListTabulatedFunctionFactory();

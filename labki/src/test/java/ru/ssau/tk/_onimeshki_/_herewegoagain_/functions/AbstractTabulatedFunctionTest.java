@@ -31,17 +31,18 @@ public class AbstractTabulatedFunctionTest {
 
     @Test
     public void checkLengthIsTheSame() {
-        assertThrows(DifferentLengthOfArraysException.class, AbstractTabulatedFunctionTest::run);
-        double[] x = new double[]{1, 2, 3, 4, 5};
-        double[] y = new double[]{11, 22, 33, 44, 55};
-        AbstractTabulatedFunction.checkLengthIsTheSame(x, y);
+        assertThrows(DifferentLengthOfArraysException.class, () -> {
+            double[] x = new double[]{-3., 5};
+            double[] y = new double[]{9.};
+            mockObj.checkLengthIsTheSame(x, y);
+        });
     }
 
     @Test
     public void checkSorted() {
         assertThrows(ArrayIsNotSortedException.class, () -> {
-            double[] valuesX = new double[]{-13., 0, 1, 6, 10, -11};
-            mockObj.checkSorted(valuesX);
+            double[] x = new double[]{-13., 0, 1, 6, 10, -11};
+            mockObj.checkSorted(x);
         });
 
         double[] x = new double[]{1, 5, 9, 10, 16};

@@ -35,11 +35,13 @@ public class TabulatedFunctionOperationServiceTest {
     public void testAdd() {
         TabulatedFunction resultSumThroughArray = operationServiceThroughArray.add(a, b);
         TabulatedFunction resultSumThroughLinkedList = operationServiceThroughLinkedList.add(a, b);
+        assertTrue(resultSumThroughArray instanceof ArrayTabulatedFunction);
         int i = 0;
         for (Point point : resultSumThroughArray) {
             assertEquals(point.x, firstX[i]);
             assertEquals(point.y, firstY[i] + secondY[i++]);
         }
+        assertTrue(resultSumThroughLinkedList instanceof LinkedListTabulatedFunction);
         i = 0;
         for (Point point : resultSumThroughLinkedList) {
             assertEquals(point.x, firstX[i]);
@@ -55,15 +57,17 @@ public class TabulatedFunctionOperationServiceTest {
 
     @Test
     public void testSubtract() {
-        TabulatedFunction resultSumThroughArray = operationServiceThroughArray.subtract(a, b);
-        TabulatedFunction resultSumThroughLinkedList = operationServiceThroughLinkedList.subtract(a, b);
+        TabulatedFunction resultSubtractThroughArray = operationServiceThroughArray.subtract(a, b);
+        TabulatedFunction resultSubtractThroughLinkedList = operationServiceThroughLinkedList.subtract(a, b);
+        assertTrue(resultSubtractThroughArray instanceof ArrayTabulatedFunction);
         int i = 0;
-        for (Point point : resultSumThroughArray) {
+        for (Point point : resultSubtractThroughArray) {
             assertEquals(point.x, firstX[i]);
             assertEquals(point.y, secondY[i++]);
         }
+        assertTrue(resultSubtractThroughLinkedList instanceof LinkedListTabulatedFunction);
         i = 0;
-        for (Point point : resultSumThroughLinkedList) {
+        for (Point point : resultSubtractThroughLinkedList) {
             assertEquals(point.x, firstX[i]);
             assertEquals(point.y, secondY[i++]);
         }
@@ -84,15 +88,17 @@ public class TabulatedFunctionOperationServiceTest {
 
     @Test
     public void testMultiply() {
-        TabulatedFunction resultSumThroughArray = operationServiceThroughArray.multiply(a, b);
-        TabulatedFunction resultSumThroughLinkedList = operationServiceThroughLinkedList.multiply(a, b);
+        TabulatedFunction resultMultiplyThroughArray = operationServiceThroughArray.multiply(a, b);
+        TabulatedFunction resultMultiplyThroughLinkedList = operationServiceThroughLinkedList.multiply(a, b);
+        assertTrue(resultMultiplyThroughArray instanceof ArrayTabulatedFunction);
         int i = 0;
-        for (Point point : resultSumThroughArray) {
+        for (Point point : resultMultiplyThroughArray) {
             assertEquals(point.x, firstX[i]);
             assertEquals(point.y, firstY[i] * secondY[i++]);
         }
+        assertTrue(resultMultiplyThroughLinkedList instanceof LinkedListTabulatedFunction);
         i = 0;
-        for (Point point : resultSumThroughLinkedList) {
+        for (Point point : resultMultiplyThroughLinkedList) {
             assertEquals(point.x, firstX[i]);
             assertEquals(point.y, firstY[i] * secondY[i++]);
         }
@@ -100,15 +106,17 @@ public class TabulatedFunctionOperationServiceTest {
 
     @Test
     public void testDivide() {
-        TabulatedFunction resultSumThroughArray = operationServiceThroughArray.divide(a, b);
-        TabulatedFunction resultSumThroughLinkedList = operationServiceThroughLinkedList.divide(a, b);
+        TabulatedFunction resultDivideThroughArray = operationServiceThroughArray.divide(a, b);
+        TabulatedFunction resultDivideThroughLinkedList = operationServiceThroughLinkedList.divide(a, b);
+        assertTrue(resultDivideThroughArray instanceof ArrayTabulatedFunction);
         int i = 0;
-        for (Point point : resultSumThroughArray) {
+        for (Point point : resultDivideThroughArray) {
             assertEquals(point.x, firstX[i++]);
             assertEquals(point.y, 2.);
         }
+        assertTrue(resultDivideThroughLinkedList instanceof LinkedListTabulatedFunction);
         i = 0;
-        for (Point point : resultSumThroughLinkedList) {
+        for (Point point : resultDivideThroughLinkedList) {
             assertEquals(point.x, firstX[i++]);
             assertEquals(point.y, 2.);
         }

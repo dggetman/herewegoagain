@@ -46,13 +46,13 @@ public abstract class AbstractTabulatedFunction implements TabulatedFunction {
         }
     }
 
-    static protected void checkLengthIsTheSame(double[] xValues, double[] yValues) {
+    protected static void checkLengthIsTheSame(double[] xValues, double[] yValues) {
         if (xValues.length != yValues.length) {
             throw new DifferentLengthOfArraysException("Lengths of arrays are different");
         }
     }
 
-    static protected void checkSorted(double[] xValues) {
+    protected static void checkSorted(double[] xValues) {
         for (int i = 0; i < xValues.length - 1; i++) {
             if (xValues[i] >= xValues[i + 1]) {
                 throw new ArrayIsNotSortedException("xValues array isn't sorted");
