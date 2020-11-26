@@ -33,6 +33,10 @@ public class ArrayTabulatedFunctionTest {
         assertThrows(IllegalArgumentException.class, () -> new ArrayTabulatedFunction(sqrFunc, 6, 2, 20));
         assertThrows(IllegalArgumentException.class, () -> new ArrayTabulatedFunction(sqrFunc, 11, 1, 21));
         assertThrows(IllegalArgumentException.class, () -> new ArrayTabulatedFunction(sqrFunc, 999, 666, 696969));
+        assertThrows(IllegalArgumentException.class, () -> new ArrayTabulatedFunction(sqrFunc, 999, 666, 1));
+        assertThrows(IllegalArgumentException.class, () -> new ArrayTabulatedFunction(sqrFunc, 999, 666, 2));
+
+
     }
 
     @Test

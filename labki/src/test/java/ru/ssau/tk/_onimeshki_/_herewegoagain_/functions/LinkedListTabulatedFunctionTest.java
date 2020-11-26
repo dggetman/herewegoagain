@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 import static org.testng.Assert.*;
 import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
-public class LinkedListTabulatedFunctionTest {
+public class    LinkedListTabulatedFunctionTest {
     private final double[] xValues = new double[]{1, 2, 3, 4, 5};
     private final double[] yValues = new double[]{11, 22, 33, 44, 55};
     private final MathFunction testFunction = new SqrtFunction();
@@ -33,6 +33,8 @@ public class LinkedListTabulatedFunctionTest {
         assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 6, 2, 20));
         assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 11, 1, 21));
         assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 999, 666, 6969690));
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 999, 666, 1));
+        assertThrows(IllegalArgumentException.class, () -> new LinkedListTabulatedFunction(testFunction, 999, 666, 2));
     }
 
     @Test
@@ -56,6 +58,7 @@ public class LinkedListTabulatedFunctionTest {
         assertEquals(getListOfArray().getX(2), 3, DELTA);
         assertEquals(getListOfArray().getX(3), 4, DELTA);
         assertEquals(getListOfArray().getX(4), 5, DELTA);
+        assertThrows(IllegalArgumentException.class, () -> getListOfArray().getX(-123));
 
         assertThrows(IllegalArgumentException.class, () -> getListOfArray().getX(-5));
     }
