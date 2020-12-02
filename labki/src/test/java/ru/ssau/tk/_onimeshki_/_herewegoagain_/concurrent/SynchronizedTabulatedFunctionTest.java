@@ -11,7 +11,7 @@ import static org.testng.Assert.assertEquals;
 public class SynchronizedTabulatedFunctionTest {
 
     private final double[] xValues = new double[]{6, 9, 13, 77, 99};
-    private final double[] yValues = new double[]{66, 99, 101, 88, 100};
+    private final double[] yValues = new double[]{66, 99, 101, 188, 1000};
     private final Object mutex = new Object();
 
     private SynchronizedTabulatedFunction getSynchronizedList() {
