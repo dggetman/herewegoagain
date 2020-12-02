@@ -1,6 +1,7 @@
 package ru.ssau.tk._onimeshki_._herewegoagain_.concurrent;
 
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
+import ru.ssau.tk._onimeshki_._herewegoagain_.operations.*;
 
 import java.util.*;
 
@@ -17,7 +18,23 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
     // Итератор не может возвращать null,
     //помни об этом ♥
     public Iterator<Point> iterator() {
-        return null;
+        Point[] points = TabulatedFunctionOperationService.asPoints(tabulatedFunction);
+        return new Iterator<>() {
+            int i = 0;
+
+            @Override
+            public boolean hasNext() {
+                return i < points.length;
+            }
+
+            @Override
+            public Point next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return points[i++];
+            }
+        };
     }
 
     public interface Operation<T> {

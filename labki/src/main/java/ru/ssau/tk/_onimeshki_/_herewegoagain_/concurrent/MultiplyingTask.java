@@ -3,15 +3,15 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.concurrent;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
 public class MultiplyingTask implements Runnable {
-    private final TabulatedFunction tabulatedFunctionFunction;
+    private final TabulatedFunction tabulatedFunction;
     private Runnable postRunAction;
 
     public MultiplyingTask(TabulatedFunction func) {
-        this.tabulatedFunctionFunction = func;
+        this.tabulatedFunction = func;
     }
 
     public MultiplyingTask(TabulatedFunction func, Runnable postRunAction) {
-        this.tabulatedFunctionFunction = func;
+        this.tabulatedFunction = func;
         this.postRunAction = postRunAction;
     }
 
@@ -19,13 +19,13 @@ public class MultiplyingTask implements Runnable {
     public void run() {
         double x;
         double y;
-        for (int i = 0; i < tabulatedFunctionFunction.getCount(); i++) {
-            x = tabulatedFunctionFunction.getX(i);
-            synchronized (tabulatedFunctionFunction) {
-                y = tabulatedFunctionFunction.getY(i);
+        for (int i = 0; i < tabulatedFunction.getCount(); i++) {
+            x = tabulatedFunction.getX(i);
+            synchronized (tabulatedFunction) {
+                y = tabulatedFunction.getY(i);
                 System.out.printf("%s, i = %d, x = %f, old y = %f \n", Thread.currentThread().getName(), i, x, y);
-                tabulatedFunctionFunction.setY(i, y * 10);
-                y = tabulatedFunctionFunction.getY(i);
+                tabulatedFunction.setY(i, y * 10);
+                y = tabulatedFunction.getY(i);
             }
             System.out.printf("%s, i = %d, x = %f, new y = %f \n", Thread.currentThread().getName(), i, x, y);
         }
