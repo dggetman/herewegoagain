@@ -3,9 +3,12 @@ package ru.ssau.tk._onimeshki_._herewegoagain_.concurrent;
 import org.testng.annotations.Test;
 import ru.ssau.tk._onimeshki_._herewegoagain_.functions.*;
 
+import java.util.NoSuchElementException;
+import java.util.Iterator;
 import java.util.Optional;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
+import static ru.ssau.tk._onimeshki_._herewegoagain_.functions.Constants.DELTA;
 
 
 public class SynchronizedTabulatedFunctionTest {
@@ -53,7 +56,7 @@ public class SynchronizedTabulatedFunctionTest {
     public void testSetY() {
         SynchronizedTabulatedFunction synchronizedTabulatedFunction = getSynchronizedList();
         synchronizedTabulatedFunction.setY(2, 39);
-        assertEquals(synchronizedTabulatedFunction.getY(2), 39, Constants.DELTA);
+        assertEquals(synchronizedTabulatedFunction.getY(2), 39, DELTA);
 
         SynchronizedTabulatedFunction synchronizedArr = getSynchronizedArray();
         synchronizedArr.setY(3, 12);
@@ -100,21 +103,44 @@ public class SynchronizedTabulatedFunctionTest {
         assertEquals(synchronizedArr.rightBound(), 99.0);
     }
 
-    /*@Test
+    @Test
     public void testIteratorWhile() {
-        //И тут тебе тоже надо написать
+        SynchronizedTabulatedFunction synchronizedTabulatedFunction = getSynchronizedList();
+        Iterator<Point> testIterator = synchronizedTabulatedFunction.iterator();
+        int i = 0;
+        while (testIterator.hasNext()) {
+            Point myPoint = testIterator.next();
+            assertEquals(synchronizedTabulatedFunction.getX(i), myPoint.x);
+            assertEquals(synchronizedTabulatedFunction.getY(i++), myPoint.y);
+        }
+        assertEquals(synchronizedTabulatedFunction.getCount(), i);
+
+        assertThrows(NoSuchElementException.class, testIterator::next);
+        SynchronizedTabulatedFunction synchronizedArr = getSynchronizedArray();
+        i = 0;
+        for (Point point : synchronizedArr) {
+            assertEquals(point.x, synchronizedArr.getX(i), DELTA);
+            assertEquals(point.y, synchronizedArr.getY(i++), DELTA);
+        }
+        assertEquals(synchronizedArr.getCount(), i);
     }
 
     @Test
     public void testIteratorForEach() {
-        //и тут тоже
-    }*/
+        SynchronizedTabulatedFunction synchronizedTabulatedFunction = getSynchronizedList();
+        int i = 0;
+        for (Point a : synchronizedTabulatedFunction) {
+            assertEquals(a.x, synchronizedTabulatedFunction.getX(i));
+            assertEquals(a.y, synchronizedTabulatedFunction.getY(i++));
+        }
+        assertEquals(synchronizedTabulatedFunction.getCount(), i);
+    }
 
 
     @Test
     public void testApply() {
         SynchronizedTabulatedFunction synchronizedTabulatedFunction = getSynchronizedList();
-        assertEquals(synchronizedTabulatedFunction.apply(5), 55.0, Constants.DELTA);
+        assertEquals(synchronizedTabulatedFunction.apply(5), 55.0, DELTA);
 
         SynchronizedTabulatedFunction synchronizedArr = getSynchronizedArray();
         assertEquals(synchronizedArr.apply(6), 66.0);

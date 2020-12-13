@@ -18,23 +18,25 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
     // Итератор не может возвращать null,
     //помни об этом ♥
     public Iterator<Point> iterator() {
-        Point[] points = TabulatedFunctionOperationService.asPoints(tabulatedFunction);
-        return new Iterator<>() {
-            int i = 0;
+        synchronized (mutex) {
+            Point[] points = TabulatedFunctionOperationService.asPoints(tabulatedFunction);
+            return new Iterator<>() {
+                int i = 0;
 
-            @Override
-            public boolean hasNext() {
-                return i < points.length;
-            }
-
-            @Override
-            public Point next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException();
+                @Override
+                public boolean hasNext() {
+                    return i < points.length;
                 }
-                return points[i++];
-            }
-        };
+
+                @Override
+                public Point next() {
+                    if (!hasNext()) {
+                        throw new NoSuchElementException();
+                    }
+                    return points[i++];
+                }
+            };
+        }
     }
 
     public interface Operation<T> {
