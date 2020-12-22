@@ -31,10 +31,8 @@ public class TabulatedFunctionWindow extends JDialog {
         getContentPane().add(countField);
         getContentPane().add(inputButton);
         getContentPane().add(createButton);
-
         compose();
         addButtonListeners();
-
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setVisible(true);
     }
@@ -116,6 +114,7 @@ public class TabulatedFunctionWindow extends JDialog {
             } catch (Exception e) {
                 new ErrorWindow(this, e);
             }
+            dispose();
         });
     }
 

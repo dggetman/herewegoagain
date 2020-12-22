@@ -14,9 +14,7 @@ public class SynchronizedTabulatedFunction implements TabulatedFunction {
         this.mutex = Objects.requireNonNull(mutex);
     }
 
-    @Override //Антошка, это тебе переписывать.
-    // Итератор не может возвращать null,
-    //помни об этом ♥
+    @Override
     public Iterator<Point> iterator() {
         synchronized (mutex) {
             Point[] points = TabulatedFunctionOperationService.asPoints(tabulatedFunction);

@@ -34,7 +34,7 @@ public class ErrorWindow {
         }
         {
             e.printStackTrace();
-            return "Я не знаю, что ты нажал(а), но скажи, что у тебя лапки♥";
+            return "У тебя лапки♥";
         }
     }
 }
