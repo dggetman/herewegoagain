@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class TabulatedFunctionWindow extends JDialog {
     private final List<Double> xValues = new ArrayList<>();
@@ -20,26 +21,27 @@ public class TabulatedFunctionWindow extends JDialog {
     private final JTextField countField = new JTextField("2");
     private final JButton inputButton = new JButton("Ввести");
     private final JButton createButton = new JButton("Создать");
+    private TabulatedFunctionFactory factory;
     private TabulatedFunction function;
 
-    public TabulatedFunctionWindow() {
-        super();
-        getContentPane().setLayout(new FlowLayout());
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setBounds(300, 300, 500, 500);
-        getContentPane().add(label);
-        getContentPane().add(countField);
-        getContentPane().add(inputButton);
-        getContentPane().add(createButton);
+    public static void main(TabulatedFunctionFactory factory,  Consumer<? super TabulatedFunction> callback) {
+        TabulatedFunctionWindow app = new TabulatedFunctionWindow(factory, callback);
+        app.setVisible(true);
+    }
+    public TabulatedFunctionWindow(TabulatedFunctionFactory factory, Consumer<? super TabulatedFunction> callback) {
+        setModal(true);
+        this.setBounds(300, 300, 500, 500);
+        this.factory = factory;
+        addButtonListeners(callback);
         compose();
-        addButtonListeners();
-        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        setVisible(true);
+        inputButton.setEnabled(false);
+        createButton.setEnabled(false);
+        setLocationRelativeTo(null);
     }
 
-    private void addButtonListeners() {
+    public void addButtonListeners(Consumer<? super TabulatedFunction> callback) {
         addListenerForInputButton();
-        addListenerForCreateButton();
+        addListenerForCreateButton(callback);
         addListenerForCountButton();
     }
 
@@ -95,7 +97,7 @@ public class TabulatedFunctionWindow extends JDialog {
         });
     }
 
-    public void addListenerForCreateButton() {
+    public void addListenerForCreateButton(Consumer<? super TabulatedFunction> callback) {
         createButton.addActionListener(event -> {
             try {
                 double[] x = new double[xValues.size()];
@@ -110,11 +112,11 @@ public class TabulatedFunctionWindow extends JDialog {
                     y[i] = yValues.get(i);
                 }
                 function = new ArrayTabulatedFunctionFactory().create(x, y);
-                System.out.println(function.toString());
+                callback.accept(function);
+                this.dispose();
             } catch (Exception e) {
                 new ErrorWindow(this, e);
             }
-            dispose();
         });
     }
 
@@ -140,7 +142,5 @@ public class TabulatedFunctionWindow extends JDialog {
             }
         });
     }
-    public static void main(String[] args) {
-        new TabulatedFunctionWindow();
-    }
+    public static void main(String[] args){}
 }
