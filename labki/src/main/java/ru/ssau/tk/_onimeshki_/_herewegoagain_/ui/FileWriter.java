@@ -30,6 +30,7 @@ public class FileWriter extends JDialog {
         p.add(filename);
         p.add(dir);
         cp.add(p, BorderLayout.NORTH);
+        setLocationRelativeTo(null);
     }
 
     public void addListenerForSaveButton() {

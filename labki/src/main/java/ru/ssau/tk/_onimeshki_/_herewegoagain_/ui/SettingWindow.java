@@ -20,6 +20,7 @@ public class SettingWindow extends JDialog {
         fillMap();
         compose();
         addButtonListeners();
+        setLocationRelativeTo(null);
     }
 
     public static void main(TabulatedFunctionFactory factory) {

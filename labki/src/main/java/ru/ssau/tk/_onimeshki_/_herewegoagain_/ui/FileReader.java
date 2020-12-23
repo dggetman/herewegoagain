@@ -32,6 +32,7 @@ public class FileReader extends JDialog {
         p.add(filename);
         p.add(dir);
         cp.add(p, BorderLayout.NORTH);
+        setLocationRelativeTo(null);
     }
 
     public void addListenerForOpenButton(Consumer<? super TabulatedFunction> callback) {
